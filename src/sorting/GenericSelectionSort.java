@@ -1,12 +1,12 @@
 package sorting;
 
-public class GenericBubbleSort<T extends Comparable<? super T>> {
+public class GenericSelectionSort<T extends Comparable<? super T>> {
 
 	private T[] array;
 	private int ARR_LENGTH = 0;
 	
 	
-	public GenericBubbleSort(T[] array){
+	public GenericSelectionSort(T[] array){
 		this.array = array.clone();
 		this.ARR_LENGTH = this.array.length;
 		sort();
@@ -15,11 +15,12 @@ public class GenericBubbleSort<T extends Comparable<? super T>> {
 	public void sort() {
 		
 		for (int LAST_UNSORTED_INDEX =  ARR_LENGTH - 1; LAST_UNSORTED_INDEX > 0; LAST_UNSORTED_INDEX--) {
-			for (int i = 0; i < LAST_UNSORTED_INDEX; i++) {
-				
-				if (array[i].compareTo(array[ i + 1 ]) > 0) {
-					swap(array,i,i+1);
+			int largest = 0;
+			for (int i = 1; i <= LAST_UNSORTED_INDEX; i++) {
+				if (array[i].compareTo(array[ largest ]) > 0) {
+					largest = i;
 				}
+				swap(array,largest,LAST_UNSORTED_INDEX);
 			}
 			
 		}
